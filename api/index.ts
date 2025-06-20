@@ -3,6 +3,7 @@ import errorHandler from '../middleware/errorHandler';
 import bookRouter from '../src/routes/book.route';
 import borrowRouter from '../src/routes/borrow.route';
 import { connectDB } from '../src/db/db';
+import ServerlessHttp from 'serverless-http';
 
 const app = express();
 
@@ -27,5 +28,6 @@ app.use('/api/books', bookRouter);
 app.use('/api/borrow', borrowRouter);
 
 app.use(errorHandler);
+app.listen(3000);
 
-export default app;
+export default ServerlessHttp(app);
