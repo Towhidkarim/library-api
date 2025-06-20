@@ -9,15 +9,16 @@ import { config } from 'dotenv';
 config();
 const app = express();
 
-app.use(async (req, res, next) => {
-  try {
-    await connectDB();
-    next();
-  } catch (err) {
-    console.error('DB connection failed:', err);
-    res.status(500).json({ message: 'Database connection error' });
-  }
-});
+// app.use(async (req, res, next) => {
+//   try {
+//     await connectDB();
+//     next();
+//   } catch (err) {
+//     console.error('DB connection failed:', err);
+//     res.status(500).json({ message: 'Database connection error' });
+//   }
+// });
+connectDB();
 
 app.use(express.json());
 
