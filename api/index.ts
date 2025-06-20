@@ -1,5 +1,5 @@
 import express from 'express';
-// import errorHandler from '../middleware/errorHandler';
+import errorHandler from '../middleware/errorHandler';
 import bookRouter from '../src/routes/book.route';
 import borrowRouter from '../src/routes/borrow.route';
 import { connectDB } from '../src/db/db';
@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 app.use('/api/books', bookRouter);
 app.use('/api/borrow', borrowRouter);
 
-// app.use(errorHandler);
+app.use(errorHandler);
 app.listen(3000);
 
 export default ServerlessHttp(app);
