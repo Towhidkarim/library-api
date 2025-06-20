@@ -4,7 +4,9 @@ import bookRouter from '../src/routes/book.route';
 import borrowRouter from '../src/routes/borrow.route';
 import { connectDB } from '../src/db/db';
 import ServerlessHttp from 'serverless-http';
+import { config } from 'dotenv';
 
+config();
 const app = express();
 
 app.use(async (req, res, next) => {
