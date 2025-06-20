@@ -2,6 +2,9 @@ import express from 'express';
 import errorHandler from '../middleware/errorHandler';
 import bookRouter from './routes/book.route';
 import borrowRouter from './routes/borrow.route';
+import { config } from 'dotenv';
+
+config();
 
 const app = express();
 app.use(express.json());
