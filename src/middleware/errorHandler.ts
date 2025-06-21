@@ -1,12 +1,12 @@
 import type { Request, Response, NextFunction } from 'express';
 import { ValidationError } from '../utils/ValidationError';
 
-const errorHandler = (
+function errorHandler(
   err: any,
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+) {
   console.error(err);
   let statusCode: number = err.status ?? 500;
   let message: string = err.message || 'An unexpected error occurred.';
@@ -23,6 +23,6 @@ const errorHandler = (
   };
   if (error) responseBody.error = error;
   res.status(statusCode).json(responseBody);
-};
+}
 
 export default errorHandler;

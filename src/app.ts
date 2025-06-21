@@ -30,7 +30,7 @@ app.use('/api/books', bookRouter);
 app.use('/api/borrow', borrowRouter);
 
 app.use((req: Request, res: Response) => {
-  res.status(404).send('Error 404 not found');
+  res.status(404).json({ message: 'Error 404! Route Not Found!' });
 });
 app.use(errorHandler);
 

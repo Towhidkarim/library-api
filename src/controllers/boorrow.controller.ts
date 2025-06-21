@@ -48,7 +48,10 @@ export async function borrowBook(
     res.status(400).json({
       succes: false,
       message: 'An error occured',
-      error: String(error),
+      error: {
+        name: 'Not Found Error',
+        message: String(error),
+      },
     });
   }
 }
@@ -94,6 +97,10 @@ export async function getBorowSumary(req: Request, res: Response) {
       success: false,
       message: 'Something went wrong',
       data: null,
+      error: {
+        name: 'Aggregation Error',
+        message: String(error),
+      },
     });
   }
 }

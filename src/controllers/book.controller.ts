@@ -18,10 +18,14 @@ export async function getBooks(req: Request, res: Response) {
           data: bookData,
         });
       else
-        res.json({
+        res.status(400).json({
           success: false,
           message: 'Book with given ID not found',
           data: null,
+          error: {
+            name: 'Not Found Error',
+            message: 'Book with given ID not found',
+          },
         });
     } else {
       const { filter, sort, sortBy, limit } = req.query;
@@ -39,8 +43,12 @@ export async function getBooks(req: Request, res: Response) {
   } catch (error) {
     res.status(401).json({
       success: false,
-      message: error,
+      message: 'An Error Occured',
       data: null,
+      error: {
+        name: 'Not Found Error',
+        message: String(error),
+      },
     });
   }
 }
@@ -96,7 +104,10 @@ export async function updateBook(
         success: false,
         message: 'Something Went Wrong',
         data: null,
-        error,
+        error: {
+          name: 'Not Found Error',
+          message: String(error),
+        },
       });
   }
 }
@@ -115,6 +126,10 @@ export async function deleteBook(req: Request, res: Response) {
     res.status(400).json({
       success: false,
       message: "Invalid ID or record with given ID doesn't exist",
+      error: {
+        name: 'Invalid ID',
+        message: "Invalid ID or record with given ID doesn't exist",
+      },
     });
   }
 }
