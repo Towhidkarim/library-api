@@ -27,7 +27,7 @@ export async function borrowBook(
     // borrowData.save();
     const borrowDBData = await BorrowDBModel.insertOne(parsedBorrowData);
     const borrowResponseData = {
-      _id: updatedBookData._id,
+      _id: borrowDBData._id,
       book: parsedBorrowData.book,
       quantity: parsedBorrowData.quantity,
       dueDate: parsedBorrowData.dueDate,

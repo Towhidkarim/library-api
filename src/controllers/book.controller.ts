@@ -81,7 +81,7 @@ export async function updateBook(
       { $set: parsedData },
       { new: true }
     );
-
+    // console.log(updateData);
     res.json({
       success: true,
       message: 'Book updated successfully',
