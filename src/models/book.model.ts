@@ -47,7 +47,7 @@ bookMongooseSchema.methods.deductQuantity = function (
     throw new Error('Not enough copies left to borrow');
   }
   this.copies -= quantity;
-  if (this.copies == 0) this.available == false;
+  if (this.copies == 0) this.available = false;
   this.save();
   return this;
 };
