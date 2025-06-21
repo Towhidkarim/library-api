@@ -10,18 +10,18 @@ const errorHandler = (
   console.error(err);
   let statusCode: number = err.status ?? 500;
   let message: string = err.message || 'An unexpected error occurred.';
-  let errors: any;
+  let error: any;
 
   if (err instanceof ValidationError) {
     statusCode = err.status;
     message = err.message;
-    errors = err.details;
+    error = err.details;
   }
-  const responseBody: { success: false; message: string; errors?: any } = {
+  const responseBody: { success: false; message: string; error?: any } = {
     success: false,
     message: message,
   };
-  if (errors) responseBody.errors = errors;
+  if (error) responseBody.error = error;
   res.status(statusCode).json(responseBody);
 };
 

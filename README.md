@@ -183,7 +183,7 @@ npm run start
 
 ```json
 {
-  "book": "68565107734df40f8a14b90c",
+  "book": "6856388127a67fccb6c27f40",
   "quantity": 2,
   "dueDate": "2025-07-18T00:00:00.000Z"
 }
@@ -197,8 +197,8 @@ npm run start
   "message": "Book borrowed successfully",
   "data": {
     "_id": "64bc4a0f9e1c2d3f4b5a6789",
-    "book": "68565107734df40f8a14b90c",
-    "quantity": 3,
+    "book": "6856388127a67fccb6c27f40",
+    "quantity": 2,
     "dueDate": "2025-07-18T00:00:00.000Z",
     "createdAt": "2025-06-18T07:12:15.123Z",
     "updatedAt": "2025-06-18T07:12:15.123Z"
@@ -253,7 +253,7 @@ Schema validation has been done using Zod
 {
   "success": false,
   "message": "Validation Failed",
-  "errors": {
+  "error": {
     "_errors": [],
     "genre": {
       "_errors": [
@@ -284,7 +284,7 @@ app.use(errorHandler);
 
 ```
 src/
-├── controllers      # Route logic
+├── controllers      # Route logic and functions
 ├── db               # MongoDB connection
 ├── middleware       # Error handler middleware
 ├── models           # Mongoose schemas with instance methods and hooks

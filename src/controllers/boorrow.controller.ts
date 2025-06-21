@@ -25,11 +25,21 @@ export async function borrowBook(
       parsedBorrowData.quantity
     );
     // borrowData.save();
-    await BorrowDBModel.insertOne(parsedBorrowData);
+    const borrowDBData = await BorrowDBModel.insertOne(parsedBorrowData);
+    const borrowResponseData = {
+      _id: updatedBookData._id,
+      book: parsedBorrowData.book,
+      quantity: parsedBorrowData.quantity,
+      dueDate: parsedBorrowData.dueDate,
+      //@ts-ignore
+      createdAt: borrowDBData.createdAt,
+      //@ts-ignore
+      updatedAt: borrowDBData.updatedAt,
+    };
     res.json({
       success: true,
       message: 'Book borrowed successfully',
-      data: updatedBookData,
+      data: borrowResponseData,
     });
   } catch (error) {
     console.error(error);
